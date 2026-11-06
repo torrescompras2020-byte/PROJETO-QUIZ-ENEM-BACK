@@ -1,6 +1,6 @@
-FROM php:8.2-cli
+FROM php:8.4-cli
 
-# Instala extensões necessárias e Composer
+# Instala extensões necessárias e dependências do sistema
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     zip \
@@ -13,7 +13,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+# Ignora restrições estritas de versão da plataforma durante o build
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
 EXPOSE 10000
 
