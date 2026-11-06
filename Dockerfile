@@ -1,6 +1,6 @@
 FROM php:8.4-cli
 
-# Instala extensões necessárias e dependências do sistema
+# Instala dependências do sistema e extensão PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     zip \
@@ -13,8 +13,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# O flag --no-scripts evita que o artisan execute hooks antes do container estar totalmente construído
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-scripts
+# Instala dependências incluindo dev para garantir compatibilidade com providers cadastrados
+RUN composer install --optimize-autoloader --ignore-platform-reqs --no-scripts
 
 EXPOSE 10000
 
