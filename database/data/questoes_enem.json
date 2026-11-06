@@ -1,0 +1,22 @@
+[
+  {
+    "materia_id": 1,
+    "assunto_id": 1,
+    "ano": 2025,
+    "numero": 1,
+    "idioma": "ingles",
+    "caderno": "Caderno 1 - Azul",
+    "enunciado": "Enunciado da questão",
+    "texto_apoio": null,
+    "imagem_url": null,
+    "dificuldade": "media",
+    "ativa": true,
+    "alternativas": [
+      {"letra": "A", "texto": "Alternativa A", "correta": false},
+      {"letra": "B", "texto": "Alternativa B", "correta": false},
+      {"letra": "C", "texto": "Alternativa C", "correta": false},
+      {"letra": "D", "texto": "Alternativa D", "correta": true},
+      {"letra": "E", "texto": "Alternativa E", "correta": false}
+    ]
+  }
+]
