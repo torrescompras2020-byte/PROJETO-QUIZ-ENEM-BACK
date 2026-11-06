@@ -13,9 +13,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# Instala dependências incluindo dev para garantir compatibilidade com providers cadastrados
+# Instala dependências
 RUN composer install --optimize-autoloader --ignore-platform-reqs --no-scripts
 
 EXPOSE 10000
 
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan serve --host=0.0.0.0 --port=10000
