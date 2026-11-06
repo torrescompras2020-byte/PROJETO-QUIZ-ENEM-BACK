@@ -13,8 +13,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# Ignora restrições estritas de versão da plataforma durante o build
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+# O flag --no-scripts evita que o artisan execute hooks antes do container estar totalmente construído
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-scripts
 
 EXPOSE 10000
 
