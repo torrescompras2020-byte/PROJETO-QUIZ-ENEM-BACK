@@ -18,4 +18,5 @@ RUN composer install --optimize-autoloader --ignore-platform-reqs --no-scripts
 
 EXPOSE 10000
 
-CMD php artisan serve --host=0.0.0.0 --port=10000
+# Executa o servidor PHP diretamente na pasta public com index.php como roteador
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "public", "public/index.php"]
